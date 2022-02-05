@@ -1,0 +1,27 @@
+CREATE TABLE Books
+(
+IdOfBook INT PRIMARY KEY IDENTITY(1,1),
+nameOfBook NVARCHAR(250) NOT NULL,
+author NVARCHAR(250) NOT NULL,
+collateralValue INT,
+rentalPrice INT,
+genre NVARCHAR(250) NOT NULL
+);
+CREATE TABLE Readers
+(
+idOfReader INT PRIMARY KEY IDENTITY(1,1),
+firstName NVARCHAR(250) NOT NULL,
+secondName NVARCHAR(250) NOT NULL,
+patronymic NVARCHAR(250),
+residentialAddress NVARCHAR(250),
+phoneNumber NVARCHAR(250) NOT NULL
+);
+CREATE TABLE borrowedBooks
+(
+IdOfBook INT,
+idOfReader INT,
+FOREIGN KEY (IdOfBook)  REFERENCES Books (IdOfBook),
+FOREIGN KEY (idOfReader)  REFERENCES Readers (idOfReader),
+dateOfBookIssue DATE NOT NULL,
+bookReturnDate DATE NOT NULL
+);
